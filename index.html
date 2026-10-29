@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f3eadb" />
+  <meta name="description" content="A charming 5–7 minute murder mystery created just for Tania. Examine the clues, keep a detective's notebook, and solve the case." />
+  <title>Death at the Velvet Hour — A Mystery for Tania</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="game.js"></script>
+</head>
+<body data-mobile-view="case">
+  <div class="paper-grain" aria-hidden="true"></div>
+  <header class="topbar">
+    <div class="brand" aria-label="Miette Mysteries">
+      <span class="brand-icon" aria-hidden="true">✦</span>
+      <span>miette <strong>mysteries</strong></span>
+    </div>
+    <div class="header-actions">
+      <span class="case-number">PRIVATE CASE · NO. 001</span>
+      <span class="clock" title="Time spent detecting"><span aria-hidden="true">◷</span> <span id="timer">00:00</span></span>
+      <button type="button" class="reset-button" id="restartButton" title="Start the mystery again">↺ <span>Restart</span></button>
+    </div>
+  </header>
+
+  <div id="gameContent">
+    <section class="hero" aria-labelledby="caseTitle">
+      <div class="hero-ornament" aria-hidden="true">✧ &nbsp; ✦ &nbsp; ✧</div>
+      <p class="eyebrow">A LITTLE MYSTERY, MADE FOR TANIA</p>
+      <h1 id="caseTitle">Death at the <em>Velvet Hour</em></h1>
+      <p class="hero-subtitle">Four suspects. Four objects. Four rooms. One beautifully inconvenient murder.</p>
+      <div class="hero-line" aria-hidden="true"><span>✦</span></div>
+      <div class="progress-steps" id="progressSteps" aria-label="Investigation progress">
+        <div class="step is-active" data-stage="0"><span class="step-number">I</span><span>THE SCENE</span></div>
+        <span class="step-divider">—</span>
+        <div class="step" data-stage="1"><span class="step-number">II</span><span>THE GUESTS</span></div>
+        <span class="step-divider">—</span>
+        <div class="step" data-stage="2"><span class="step-number">III</span><span>THE SECRET</span></div>
+      </div>
+    </section>
+
+    <div class="game-layout" id="gameLayout">
+      <main class="casework" id="caseView">
+        <section class="briefing card-paper">
+          <div class="section-topline"><span class="paper-tag">THE CASE FILE</span><span class="roman">M. M. / 001</span></div>
+          <div class="briefing-inner">
+            <div class="briefing-decoration" aria-hidden="true"><span>✦</span><span>✧</span></div>
+            <div>
+              <h2>One blackout. One body. Four very good liars.</h2>
+              <p>At 9:17 p.m., the lights went out during an invitation-only soirée at Maison Miette. Six minutes later, the host, <strong>Julian Bellamy</strong>, was discovered dead on the grand staircase. The body had been moved there.</p>
+              <p>Four guests were inside. During the blackout, <strong>each was in a different room and carried a different object</strong>. They did not exchange objects. The culprit used the object they carried.</p>
+              <div class="objective"><span class="objective-icon">✧</span><p><strong>Your assignment:</strong> Work out <strong>who</strong> killed Julian, <strong>with what</strong>, and <strong>where</strong> it happened. Your notebook and evidence are all you need.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="dossier-section" aria-labelledby="suspectsHeading">
+          <div class="section-heading"><div><p class="eyebrow">PERSONS OF INTEREST</p><h2 id="suspectsHeading">The suspect gallery <span class="heading-star">✳</span></h2></div><span class="section-count">04 / 04</span></div>
+          <div class="suspect-grid">
+            <article class="suspect-card" style="--portrait-bg:#d7b7a2;--coat:#754b54">
+              <div class="portrait">
+                <svg viewBox="0 0 160 163" role="img" aria-label="Illustration of Celeste wearing a burgundy dress and wavy hair">
+                  <circle cx="120" cy="31" r="27" fill="#f4dfca" opacity=".35"/><path d="M0 158 Q17 124 55 124 L106 124 Q143 130 160 158Z" fill="#764e58"/>
+                  <path d="M45 74 Q37 34 61 25 Q83 13 103 28 Q125 42 115 83 Q126 101 115 120 L100 124 Q113 103 103 78 L55 80 Q55 106 62 124 L43 118 Q30 97 45 74" fill="#4b302e"/>
+                  <rect x="71" y="105" width="19" height="28" rx="8" fill="#d8a888"/><ellipse cx="81" cy="70" rx="30" ry="39" fill="#e3b59b"/>
+                  <path d="M50 63 Q54 20 85 28 Q105 30 110 56 Q88 52 79 39 Q70 57 50 63" fill="#4b302e"/>
+                  <path d="M70 75h4M90 75h4" stroke="#68423a" stroke-linecap="round" stroke-width="2"/><path d="M77 90q5 4 10 0" fill="none" stroke="#a86c69" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M75 129 81 143 90 129" fill="none" stroke="#ebd0a4" stroke-width="3"/><circle cx="107" cy="46" r="4" fill="#ead5a1"/>
+                </svg>
+                <span class="portrait-index">01</span>
+              </div>
+              <div class="suspect-info"><h3>Celeste Vale</h3><p class="suspect-role">THE FLORIST</p><p>Calm hands. Expensive perfume. A very old grudge.</p></div>
+            </article>
+            <article class="suspect-card" style="--portrait-bg:#c7b39f;--coat:#504c45">
+              <div class="portrait">
+                <svg viewBox="0 0 160 163" role="img" aria-label="Illustration of Felix with dark side-parted hair and a bow tie">
+                  <circle cx="36" cy="33" r="26" fill="#eee1cb" opacity=".34"/><path d="M0 162 Q22 123 59 120 L103 120 Q140 127 160 162Z" fill="#504a43"/>
+                  <path d="M57 122 80 145 104 122 95 117 65 117Z" fill="#f2e8d8"/>
+                  <rect x="71" y="102" width="18" height="27" rx="8" fill="#d3a584"/><ellipse cx="80" cy="69" rx="29" ry="38" fill="#e1b396"/>
+                  <path d="M48 68 Q43 43 58 30 Q75 14 102 26 Q119 34 112 62 Q105 52 97 44 Q77 54 48 53Z" fill="#3f322e"/>
+                  <path d="M69 76h4M87 76h4" stroke="#573d34" stroke-width="2" stroke-linecap="round"/><path d="M74 90q6 3 12 0" stroke="#a66e65" fill="none" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M72 121 80 127 88 121 88 132 80 128 72 132Z" fill="#a7806c"/><circle cx="80" cy="127" r="2.4" fill="#503b35"/>
+                </svg>
+                <span class="portrait-index">02</span>
+              </div>
+              <div class="suspect-info"><h3>Felix Finch</h3><p class="suspect-role">THE PIANIST</p><p>Charming. Indebted. His encore was cancelled.</p></div>
+            </article>
+            <article class="suspect-card" style="--portrait-bg:#d7c3a4;--coat:#917357">
+              <div class="portrait">
+                <svg viewBox="0 0 160 163" role="img" aria-label="Illustration of Iris wearing a chef's collar and hair in a bun">
+                  <circle cx="128" cy="30" r="24" fill="#f6e8d4" opacity=".38"/><path d="M0 162 Q15 123 58 120 L105 120 Q140 125 160 162Z" fill="#8a725d"/>
+                  <circle cx="81" cy="30" r="21" fill="#583c2e"/><rect x="70" y="103" width="21" height="28" rx="9" fill="#d8a488"/><ellipse cx="81" cy="70" rx="30" ry="40" fill="#e7b79b"/>
+                  <path d="M52 63 Q49 37 71 31 Q105 25 111 60 Q93 55 83 44 Q76 58 52 63" fill="#583c2e"/>
+                  <path d="M70 77h4M89 77h4" stroke="#6a4738" stroke-width="2" stroke-linecap="round"/><path d="M77 92q5 4 10 0" stroke="#ae7065" fill="none" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M59 121 80 136 102 121 109 163H52Z" fill="#f4ede0"/><path d="M80 136v27" stroke="#cabaa0" stroke-width="2"/><circle cx="89" cy="145" r="2" fill="#a88f75"/>
+                </svg>
+                <span class="portrait-index">03</span>
+              </div>
+              <div class="suspect-info"><h3>Iris Bell</h3><p class="suspect-role">THE PÂTISSIÈRE</p><p>Knows every secret recipe. And every secret.</p></div>
+            </article>
+            <article class="suspect-card" style="--portrait-bg:#c4b6a2;--coat:#6b6653">
+              <div class="portrait">
+                <svg viewBox="0 0 160 163" role="img" aria-label="Illustration of Theo wearing round glasses and a green jacket">
+                  <circle cx="40" cy="30" r="24" fill="#f6e8d4" opacity=".3"/><path d="M0 162 Q18 124 58 119 L104 119 Q141 127 160 162Z" fill="#686755"/>
+                  <rect x="70" y="102" width="19" height="29" rx="9" fill="#cba283"/><ellipse cx="80" cy="70" rx="31" ry="40" fill="#d9af90"/>
+                  <path d="M48 65 Q43 34 56 30 Q57 17 69 22 Q80 11 90 24 Q107 16 111 34 Q121 44 111 65 Q99 53 87 41 Q70 55 48 65" fill="#51453b"/>
+                  <circle cx="69" cy="78" r="10" fill="none" stroke="#544c40" stroke-width="2.2"/><circle cx="92" cy="78" r="10" fill="none" stroke="#544c40" stroke-width="2.2"/><path d="M79 76h3M58 75h-6M103 75h8" stroke="#544c40" stroke-width="2"/>
+                  <path d="M74 95q6 3 12 0" stroke="#9e746a" fill="none" stroke-width="2" stroke-linecap="round"/><path d="m65 123 15 21 15-21" fill="none" stroke="#e2d5b8" stroke-width="4"/>
+                </svg>
+                <span class="portrait-index">04</span>
+              </div>
+              <div class="suspect-info"><h3>Theo Wren</h3><p class="suspect-role">THE JOURNALIST</p><p>Always chasing a scoop. Always in the wrong place.</p></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="inventory-section" aria-labelledby="inventoryHeading">
+          <div class="section-heading"><div><p class="eyebrow">THE POSSIBILITIES</p><h2 id="inventoryHeading">Objects &amp; rooms <span class="heading-star">✳</span></h2></div></div>
+          <div class="inventory-panels">
+            <div class="inventory-panel"><p class="inventory-title">FOUR OBJECTS</p>
+              <div class="inventory-list">
+                <div><span class="inventory-glyph">♜</span><span>Brass candlestick</span></div>
+                <div><span class="inventory-glyph">✧</span><span>Crystal atomizer</span></div>
+                <div><span class="inventory-glyph">⌁</span><span>Engraved letter opener</span></div>
+                <div><span class="inventory-glyph">⚜</span><span>Silver cake knife</span></div>
+              </div>
+            </div>
+            <div class="inventory-panel"><p class="inventory-title">FOUR ROOMS</p>
+              <div class="inventory-list">
+                <div><span class="inventory-glyph">❀</span><span>Orchid Conservatory</span></div>
+                <div><span class="inventory-glyph">❖</span><span>Portrait Gallery</span></div>
+                <div><span class="inventory-glyph">❦</span><span>Moonlit Library</span></div>
+                <div><span class="inventory-glyph">✳</span><span>Sugar Kitchen</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="evidence-section" id="evidenceSection" aria-labelledby="evidenceHeading">
+          <div class="section-heading"><div><p class="eyebrow">OPEN THE FILES, FIND THE TRUTH</p><h2 id="evidenceHeading">Evidence archive <span class="heading-star">✳</span></h2></div><div class="read-count"><span id="readCount">0</span> / 10 EXAMINED</div></div>
+          <div class="evidence-progress" role="progressbar" aria-label="Evidence reviewed" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="evidenceProgress"><span id="evidenceProgressFill"></span></div>
+          <div id="chapterList"></div>
+        </section>
+        <footer class="main-footer">A MIETTE MYSTERY <span>✦</span> MADE WITH LOVE, FOR TANIA</footer>
+      </main>
+
+      <aside class="journal-col" id="journalView" aria-label="Your detective's notebook and accusation">
+        <div class="journal-card">
+          <div class="journal-header"><span class="eyebrow">PRIVATE INVESTIGATOR'S DESK</span><span class="handwritten-star" aria-hidden="true">✦</span><h2>Detective's notebook</h2><p>A good detective writes everything down.</p></div>
+          <div class="journal-tabs" role="tablist" aria-label="Investigation tools">
+            <button type="button" class="journal-tab is-selected" id="notesTab" role="tab" aria-selected="true" aria-controls="notebookPanel">✎ &nbsp;Notebook</button>
+            <button type="button" class="journal-tab" id="verdictTab" role="tab" aria-selected="false" aria-controls="verdictPanel">⚖ &nbsp;The verdict</button>
+          </div>
+          <div id="notebookPanel" role="tabpanel" aria-labelledby="notesTab">
+            <div class="notebook-content">
+              <div class="subheading"><h3>My deductions</h3><span id="saveStatus" aria-live="polite">AUTOSAVED</span></div>
+              <label class="visually-hidden" for="notesInput">Write your detective notes here</label>
+              <textarea id="notesInput" placeholder="Something about that candlestick…\n\nWho was where? What doesn't add up?" spellcheck="true"></textarea>
+              <div class="logic-head"><div><h3>The logic grids</h3><p>Tap a square: blank → ✕ → ✓ → blank.</p></div><button type="button" id="clearGridButton" class="text-button" title="Clear both grids">Clear</button></div>
+              <div class="grid-module"><p class="grid-title">WHO WAS IN WHICH ROOM?</p><div id="roomsGrid" class="logic-grid-wrapper"></div></div>
+              <div class="grid-module"><p class="grid-title">WHO HELD WHICH OBJECT?</p><div id="objectsGrid" class="logic-grid-wrapper"></div></div>
+              <div class="mini-legend"><span><b class="cell-example crossed">✕</b> NO</span><span><b class="cell-example confirmed">✓</b> YES</span><span><b class="cell-example">·</b> UNKNOWN</span></div>
+              <div class="hints"><p class="grid-title">A LITTLE HELP?</p><p id="hintText">A brilliant detective sometimes needs a nudge. Hints are completely optional.</p><button type="button" id="hintButton" class="outline-button">Reveal a hint <span>↗</span></button></div>
+            </div>
+          </div>
+          <div id="verdictPanel" role="tabpanel" aria-labelledby="verdictTab" hidden>
+            <div class="verdict-content">
+              <div class="verdict-seal">✦</div>
+              <p class="eyebrow">YOUR FINAL THEORY</p>
+              <h3>Make your accusation.</h3>
+              <p>Choose the killer, the object, and the true scene of the crime. Check your notes first — there is only one answer.</p>
+              <form id="verdictForm">
+                <label for="killerSelect">I ACCUSE…</label>
+                <select id="killerSelect" required><option value="">Choose a suspect</option><option value="Celeste">Celeste Vale</option><option value="Felix">Felix Finch</option><option value="Iris">Iris Bell</option><option value="Theo">Theo Wren</option></select>
+                <label for="weaponSelect">WITH THE…</label>
+                <select id="weaponSelect" required><option value="">Choose an object</option><option value="candlestick">Brass candlestick</option><option value="atomizer">Crystal atomizer</option><option value="letter opener">Engraved letter opener</option><option value="cake knife">Silver cake knife</option></select>
+                <label for="roomSelect">IN THE…</label>
+                <select id="roomSelect" required><option value="">Choose a room</option><option value="conservatory">Orchid Conservatory</option><option value="gallery">Portrait Gallery</option><option value="library">Moonlit Library</option><option value="kitchen">Sugar Kitchen</option></select>
+                <button type="submit" class="primary-button accuse-button" id="accuseButton" disabled>Seal the accusation <span>↗</span></button>
+                <p id="unlockNotice" class="unlock-notice">Examine all 10 pieces of evidence to seal your theory.</p>
+                <p id="verdictFeedback" class="verdict-feedback" role="status" aria-live="polite"></p>
+              </form>
+            </div>
+          </div>
+          <div class="journal-bottom"><span>CONFIDENTIAL</span><span>✦</span><span>EST. 9:17 PM</span></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <nav class="mobile-nav" aria-label="Game sections">
+    <button type="button" id="mobileCase" class="mobile-nav-button is-current"><span>⌕</span>Case file</button>
+    <button type="button" id="mobileNotes" class="mobile-nav-button"><span>✎</span>Notebook</button>
+    <button type="button" id="mobileVerdict" class="mobile-nav-button"><span>⚖</span>Verdict</button>
+  </nav>
+
+  <div class="overlay welcome-overlay" id="welcomeOverlay" role="dialog" aria-modal="true" aria-labelledby="welcomeHeading">
+    <div class="welcome-card">
+      <div class="welcome-border">
+        <div class="welcome-top"><span>MIETTE MYSTERIES</span><span>EST. TONIGHT</span></div>
+        <div class="welcome-symbol" aria-hidden="true">✦</div>
+        <p class="eyebrow">A PRIVATE INVITATION FOR TANIA</p>
+        <h2 id="welcomeHeading">You have been <em>summoned.</em></h2>
+        <p>There's been a murder at Maison Miette. Everyone has a secret, and nobody is telling quite the truth.</p>
+        <p>Follow the evidence, fill your notebook, and solve the mystery before the trail goes cold.</p>
+        <div class="welcome-details"><span>⌛ &nbsp; 5–7 MINUTES</span><span>✎ &nbsp; NOTEBOOK INCLUDED</span><span>♡ &nbsp; MADE FOR YOU</span></div>
+        <button type="button" id="startButton" class="primary-button start-button">Accept the case <span>↗</span></button>
+        <p class="welcome-footnote">P.S. Trust the clues, not the charming suspects.</p>
+      </div>
+    </div>
+  </div>
+
+  <dialog id="clueDialog" class="clue-dialog" aria-labelledby="dialogTitle">
+    <div class="dialog-head"><span class="paper-tag" id="dialogPacket">EVIDENCE</span><button type="button" id="closeDialog" class="dialog-close" aria-label="Close evidence">×</button></div>
+    <div class="dialog-symbol" id="dialogSymbol" aria-hidden="true">✦</div>
+    <p class="eyebrow" id="dialogNumber">EXHIBIT NO. 01</p>
+    <h2 id="dialogTitle">Evidence title</h2>
+    <div id="dialogBody" class="dialog-body"></div>
+    <div class="finding"><span>DETECTIVE'S TAKEAWAY</span><p id="dialogFinding"></p></div>
+    <div class="dialog-actions"><button type="button" id="pinClueButton" class="outline-button">✎ &nbsp; Add to notebook</button><button type="button" id="nextClueButton" class="primary-button">Close file <span>✓</span></button></div>
+  </dialog>
+
+  <div class="overlay success-overlay" id="successOverlay" role="dialog" aria-modal="true" aria-labelledby="successHeading" hidden>
+    <div class="floating-hearts" aria-hidden="true"><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span></div>
+    <div class="success-card">
+      <div class="success-topline">CASE FILE 001 <span>✦</span> OFFICIALLY CLOSED</div>
+      <div class="success-emblem" aria-hidden="true">♡</div>
+      <p class="eyebrow">BRILLIANT WORK, DETECTIVE</p>
+      <h2 id="successHeading">The case is <em>closed.</em></h2>
+      <p class="solution-copy"><strong>Felix Finch</strong> killed Julian with the <strong>engraved letter opener</strong> in the <strong>Portrait Gallery</strong>. Julian had discovered Felix was stealing the gala funds and planned to expose him that night.</p>
+      <div class="success-divider"><span>✦</span></div>
+      <p class="the-real-secret">BUT THE REAL SECRET IS…</p>
+      <p class="tania-message" aria-label="Tania’s the prettiest ♥️">Tania’s the<br /> prettiest <span>♥️</span></p>
+      <p class="success-signoff">And no amount of detective work could ever prove otherwise.</p>
+      <div class="success-actions"><span id="finalTime">SOLVED IN 00:00</span><button type="button" id="playAgainButton" class="outline-button">Play again ↺</button></div>
+    </div>
+  </div>
+
+  <div id="liveAnnouncer" class="visually-hidden" role="status" aria-live="polite"></div>
+</body>
+</html>
